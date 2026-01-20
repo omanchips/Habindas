@@ -1,15 +1,17 @@
 :root {
-    --primary-color: #0F172A; /* Dark Slate / Near Black */
-    --accent-color: #CBA135; /* Gold/Premium accent */
+    --primary-color: #0F172A;
+    /* Dark Slate / Near Black */
+    --accent-color: #CBA135;
+    /* Gold/Premium accent */
     --background-color: #FFFFFF;
     --background-alt: #F8FAFC;
     --text-color: #334155;
     --heading-color: #0F172A;
     --border-color: #E2E8F0;
-    
+
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
-    
+
     --container-width: 1200px;
     --header-height: 80px;
 }
@@ -30,10 +32,17 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
+    background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+    background-size: 30px 30px;
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--font-heading);
     color: var(--heading-color);
     font-weight: 600;
@@ -142,12 +151,15 @@ ul {
 
 /* Hero Section */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    /* Split content and visuals */
     padding: 0 5%;
     position: relative;
     overflow: hidden;
+    gap: 4rem;
 }
 
 .hero-content {
@@ -212,19 +224,219 @@ ul {
 }
 
 .c1 {
-    width: 400px;
-    height: 400px;
-    background-color: rgba(203, 161, 53, 0.1);
-    top: -100px;
-    right: -100px;
+    width: 500px;
+    height: 500px;
+    background-color: rgba(203, 161, 53, 0.15);
+    /* Stronger Gold */
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    filter: blur(80px);
 }
 
 .c2 {
     width: 600px;
     height: 600px;
-    background-color: rgba(226, 232, 240, 0.4);
+    background-color: rgba(15, 23, 42, 0.05);
+    /* Very subtle slate */
     bottom: -150px;
     left: -150px;
+}
+
+/* Hero Visuals (Glass Card) */
+.hero-visuals {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    perspective: 1000px;
+    /* Enable 3D space */
+}
+
+.code-card {
+    background: rgba(255, 255, 255, 0.7);
+    /* White Glass */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+
+    width: 100%;
+    max-width: 450px;
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.1),
+        inset 0 0 0 2px rgba(203, 161, 53, 0.4);
+    /* Thicker Inner Gold Rim */
+    transform: rotateY(-10deg) rotateX(5deg);
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    /* Buttery smooth */
+    animation: float 6s ease-in-out infinite;
+    position: relative;
+}
+
+
+
+/* Optional: Additional Gold Glow on hover */
+.code-card:hover {
+    transform: rotateY(0deg) rotateX(0deg) scale(1.02);
+    box-shadow:
+        0 40px 80px -20px rgba(203, 161, 53, 0.25),
+        /* Smoother, deeper gold glow */
+        inset 0 0 0 2px rgba(203, 161, 53, 0.6);
+    /* Intensify rim */
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1.2rem;
+    border-bottom: 1px solid rgba(203, 161, 53, 0.3);
+    /* Slightly stronger gold separator */
+    background: rgba(241, 245, 249, 0.4);
+    margin-top: 4px;
+    /* Offset for the pseudo-element border */
+}
+
+.traffic-lights {
+    display: flex;
+    gap: 6px;
+    margin-right: 1rem;
+}
+
+.traffic-lights span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.traffic-lights .red {
+    background-color: #ff5f56;
+}
+
+.traffic-lights .yellow {
+    background-color: #ffbd2e;
+}
+
+.traffic-lights .green {
+    background-color: #27c93f;
+}
+
+.filename {
+    color: #94A3B8;
+    font-size: 0.85rem;
+    font-family: 'Fira Code', monospace;
+    margin-left: auto;
+}
+
+.card-body {
+    padding: 1.5rem;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #475569;
+    /* Slate 600 - Readable Dark Grey */
+}
+
+.line {
+    white-space: pre-wrap;
+}
+
+.indent {
+    padding-left: 1.5rem;
+}
+
+/* Syntax Highlighting */
+.keyword {
+    color: #b48a20;
+    font-weight: 600;
+}
+
+/* Dark Gold */
+.component {
+    color: #0F172A;
+    font-weight: 700;
+}
+
+/* Slate 900 */
+.tag {
+    color: #64748B;
+}
+
+/* Slate 500 */
+.prop {
+    color: #b48a20;
+}
+
+/* Dark Gold */
+.string {
+    color: #059669;
+}
+
+/* Emerald - Nice contrast with gold, or use Gold */
+
+/* Typing Animation */
+.item-1,
+.item-2,
+.item-3,
+.item-4,
+.item-5 {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.item-1 {
+    animation-delay: 0.2s;
+}
+
+.item-2 {
+    animation-delay: 0.8s;
+}
+
+.item-3 {
+    animation-delay: 1.4s;
+}
+
+.item-4 {
+    animation-delay: 2.0s;
+}
+
+.item-5 {
+    animation-delay: 2.6s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: rotateY(-10deg) rotateX(5deg) translateY(0);
+    }
+
+    50% {
+        transform: rotateY(-10deg) rotateX(5deg) translateY(-10px);
+    }
+}
+
+@media (max-width: 968px) {
+    .hero {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding-top: 100px;
+    }
+
+    .hero-visuals {
+        display: none;
+        /* Hide 3D card on mobile/tablet to save space */
+    }
 }
 
 /* Portfolio Section */
@@ -272,16 +484,15 @@ ul {
 
 .card-image {
     position: relative;
-    height: 250px;
+    height: auto;
     overflow: hidden;
 }
 
 .card-image img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
+    height: auto;
     transition: transform 0.5s ease;
+    display: block;
 }
 
 .project-card:hover .card-image img {
@@ -420,11 +631,11 @@ footer {
     .nav-links {
         display: none;
     }
-    
+
     .hero h1 {
         font-size: 3rem;
     }
-    
+
     .portfolio-grid {
         grid-template-columns: 1fr;
     }
